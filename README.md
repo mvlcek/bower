@@ -43,7 +43,27 @@ $ bower install <package> --save
 $ bower install <package>#<version> --save
 ```
 
-**Extended usage with Maven support**
+### Using packages
+
+We discourage using bower components statically for performance and security reasons (if component has an `upload.php` file that is not ignored, that can be easily exploited to do malicious stuff).
+
+The best approach is to process components installed by bower with build tool (like [Grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/)), and serve them concatenated or using module loader (like [RequireJS](http://requirejs.org/)).
+
+**Maven extension**: package URLs can use maven+http://... or maven+https://... to access a maven repository (URL up to the package name, not including the version number)
+
+### Uninstalling packages
+
+To uninstall a locally installed package:
+
+```sh
+$ bower uninstall <package-name>
+```
+
+### prezto and oh-my-zsh users
+
+On `prezto` or `oh-my-zsh`, do not forget to `alias bower='noglob bower'` or `bower install jquery\#1.9.1`
+
+### Extended usage with Maven support
 
 Use case: you have a (private) maven repository (like [artifactory](http://www.jfrog.com/artifactory)), where you deploy bower packages to with a maven build (e.g. by [Jenkins](http://jenkins-ci.org/)).
 
@@ -66,23 +86,10 @@ After the first successful deployment of a bower package to your maven repositor
 $ bower register <package> maven+http://your.maven.repository//.../<package>
 ```
 
-### Using packages
-
-We discourage using bower components statically for performance and security reasons (if component has an `upload.php` file that is not ignored, that can be easily exploited to do malicious stuff).
-
-The best approach is to process components installed by bower with build tool (like [Grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/)), and serve them concatenated or using module loader (like [RequireJS](http://requirejs.org/)).
-
-### Uninstalling packages
-
-To uninstall a locally installed package:
-
+There is a patched [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task), which uses cns-bower:
 ```sh
-$ bower uninstall <package-name>
+$ npm install grunt-cns-bower-task
 ```
-
-### prezto and oh-my-zsh users
-
-On `prezto` or `oh-my-zsh`, do not forget to `alias bower='noglob bower'` or `bower install jquery\#1.9.1`
 
 ### Running commands with sudo
 
