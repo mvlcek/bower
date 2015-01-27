@@ -86,7 +86,7 @@ After the first successful deployment of a bower package to your maven repositor
 $ bower register <package> maven+http://your.maven.repository//.../<package>
 ```
 
-There is a patched [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task), which uses cns-bower:
+If you use grunt, there is a patched [fork](https://github.com/mvlcek/grunt-bower-task) of [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task), which uses cns-bower:
 ```sh
 $ npm install grunt-cns-bower-task
 ```
